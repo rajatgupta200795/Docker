@@ -1,0 +1,72 @@
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04
+
+sudo apt update
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+sudo apt update
+apt-cache policy docker-ce
+sudo apt install -y docker-ce
+sudo systemctl status docker
+
+
+docker exec -it cb4ee2554cc3 bash
+
+cat /etc/*release*
+
+docker search debian
+docker pull debian
+docker pull ubuntu:14.04
+docker images
+docker run -it -p 9000:80 --name=debian_container1 debian
+docker ps
+docker stop db_container1
+docker start db_container1
+docker kill db_container2
+docker rm db_container2
+docker rm -f  web_container2
+docker rmi ubuntu:14.04
+docker history ubuntu:16.04
+docker logs xibodocker_container
+docker stats
+docker stats --no-stream
+docker top xibodocker_cms-web_1
+docker inspect web_container | grep IPAddress | cut -d '"' -f 4
+docker build -t dockerFile
+docker tag centos:7 mycentos7:v1
+docker kill $(docker ps -aq)
+ 	
+
+couchbase and docker : https://hub.docker.com/_/couchbase
+
+
+
+echo "Asia/Kolkata" | sudo tee /etc/timezone
+sudo dpkg-reconfigure --frontend noninteractive tzdata
+
+#!/bin/bash
+sudo apt-get update
+sudo apt-get install apache2 -y
+sudo service apache2 start
+sudo apt-get install git -y
+sudo apt-get install docker.io -y
+sudo service docker start
+
+
+
+======================================================================
+
+REMOVE DOCKER COMPLETELY
+
+dpkg -l | grep -i docker
+
+sudo apt-get purge -y docker-engine docker docker.io docker-ce  
+sudo apt-get autoremove -y --purge docker-engine docker docker.io docker-ce  
+
+sudo rm -rf /var/lib/docker
+sudo rm /etc/apparmor.d/docker
+sudo groupdel docker
+sudo rm -rf /var/run/docker.sock
+
+=====================================================================
+
